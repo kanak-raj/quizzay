@@ -46,7 +46,7 @@ const QuizTaken = (props) => {
               textAlign: "center",
             }}
           >
-            Don't cry because it is over, smile because it happened!
+           LMAOOO NOOOB !! 😕
           </div>
         </div>
         {/* <div className="row mt-5">
