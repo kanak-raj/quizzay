@@ -28,14 +28,14 @@ class Registration extends Component {
     this.setState({ password: e.target.value, error: false });
   };
 
-  // handleRoleChange = (e) => {
-  //   this.setState({ role: e.target.value, error: false });
-  // };
+  handleRoleChange = (e) => {
+    this.setState({ role: e.target.value, error: false });
+  };
 
   handleRegistrationSubmit = (e) => {
     e.preventDefault();
-    const { name, email, password } = this.state;
-    AuthService.register({ name, email, password }).then((response) => {
+    const { name, email, password,role } = this.state;
+    AuthService.register({ name, email, password,role }).then((response) => {
       if (response === false) {
         this.setState({ error: true });
       } else {
@@ -43,9 +43,9 @@ class Registration extends Component {
       }
     });
   };
-  // radioClick=(e) => {
-  //   console.log(e.target.value)
-  // }
+  radioClick=(e) => {
+    console.log(e.target.value)
+  }
   render() {
     // console.log("register", sessionStorage.getItem("isLoggedIn"));
     if (this.props.checkLogin()) {
@@ -138,10 +138,10 @@ class Registration extends Component {
                 </div>
               </div>
 
-              {/* <div className="row mt-4">
+              <div className="row mt-4">
                 <div className="col-sm-4 offset-sm-4">
                   {/* </div></div><label className="input-label" htmlFor="inputEmail"> */}
-                  {/* <label className="input-label">
+                  <label className="input-label">
                     Role
                   </label><br /> 
                   <input 
@@ -149,7 +149,7 @@ class Registration extends Component {
                     id="Admin" 
                     name="role" 
                     value="Admin"
-                    checked={this.state.setState === 'Admin'} 
+                    // checked={this.state.setState === 'Admin'} 
                     onChange={this.handleRoleChange}
                     onClick={this.radioClick}
                     />
@@ -159,13 +159,13 @@ class Registration extends Component {
                       id="Student" 
                       name="role" 
                       value="Student" 
-                      checked={this.state.setState === 'Student'} 
+                      // checked={this.state.setState === 'Student'} 
                       onChange={this.handleRoleChange}
                       onClick={this.radioClick}
                       />
                   <label className="input-label" for="Student"> Student</label><br />
                 </div>
-              </div> */} */}
+              </div> 
 
               <div className="row mt-5">
                 <div className="col-sm-2 offset-sm-4">

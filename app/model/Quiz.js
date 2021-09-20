@@ -21,6 +21,11 @@ const quizSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  time: {
+    type: Number,
+    required: true,
+    default:300,
+  },
   questions: [
     {
       id: {
@@ -53,10 +58,33 @@ const quizSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  // partID:{
+  //   type:String,
+  //   default:0,
+  // },
+  // partScore:{
+  //   type:Number,
+  //   default:0,
+  // },
+ 
   flawless: {
     type: Number,
     default: 0,
   },
+  partInfo:[
+    {
+    partId: {
+      type: String,
+      
+    },
+    partScore: {
+      type: Number,
+      
+      default:0,
+    },
+    
+  }
+],
   date: {
     type: Date,
     default: Date.now(),

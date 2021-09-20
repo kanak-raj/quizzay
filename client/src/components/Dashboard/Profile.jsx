@@ -18,7 +18,9 @@ const Profile = (props) => {
             <CountBox title="Flawless Quiz" number={props.flawless} />
           </div>
         </div>
+        
       </div>
+      {/* console.log(props.name) */}
     </React.Fragment>
   );
 };

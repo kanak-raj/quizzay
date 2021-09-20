@@ -4,6 +4,7 @@ import NavBar from "../Layout/NavBar";
 import Profile from "./Profile";
 import Tools from "./Tools";
 import CuratedQuizList from "./CuratedQuizList";
+import CuratedResultList from "./CuratedResultList";
 import QuizService from "../../service/QuizService";
 import QuizzerService from "../../service/QuizzerService";
 
@@ -80,7 +81,12 @@ class Dashboard extends Component {
               classes="curated-quiz-section section"
               quizzes={this.props.quizzes}
             />
-
+            <br/>
+            {/* <CuratedResultList
+              // use this class only if you're desperate: curated-quiz-section
+              classes="curated-quiz-section section"
+              // quizzes={this.props.quizzes}
+            /> */}
             {/* Tools section  end*/}
           </div>
         </div>

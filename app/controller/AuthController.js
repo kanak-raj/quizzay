@@ -24,17 +24,19 @@ const AuthController = {
       const existingUser = await User.findOne({ email: req.body.email });
       if (existingUser) return res.status(400).send("User already exists");
 
-      // create user
-      const { name, email, password } = req.body;
+      // create user add role
+      const { name, email, password,role } = req.body;
 
       // hasing password
       const salt = bcrypt.genSaltSync();
       const hashedPass = bcrypt.hashSync(password, salt);
 
+      //add role
       const user = new User({
         name: name,
         email: email,
         password: hashedPass,
+        role: role,
       });
       const savedUser = await user.save();
       // return res.status(200).send(savedUser);
@@ -65,12 +67,12 @@ const AuthController = {
 
       // create and assign a jwt token
       const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-
-      const { _id, name, email } = user;
+      //role
+      const { _id, name, email,role } = user;
       return res
         .header("auth-token", token)
         .status(200)
-        .send({ _id, name, email });
+        .send({ _id, name, email,role });
     } catch (err) {
       return res.status(400).send("Invalid data given.");
     }

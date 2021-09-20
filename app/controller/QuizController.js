@@ -1,11 +1,12 @@
 const Joi = require("@hapi/joi");
 
 const Quiz = require("../model/Quiz");
+const User = require("../model/User");
 const QuizzerController = require("./QuizzerController");
 
 const QuizController = {
   createQuiz: async (req, res, next) => {
-    const { title, description, type, questions } = req.body;
+    const { title, description, type,time, questions } = req.body;
     const user_id = req.params.user_id;
 
     // const quizSchema = Joi.object({
@@ -18,7 +19,7 @@ const QuizController = {
 
     try {
       // create Quiz
-      const quiz = new Quiz({ user_id, title, description, type, questions });
+      const quiz = new Quiz({ user_id, title, description, type,time, questions});
       // //   validating given data
       // const { error } = quizSchema.validate(quiz);
       // console.log(error);
@@ -86,6 +87,8 @@ const QuizController = {
   submitQuizAnswer: async (req, res, next) => {
     try {
       const user_id = req.params.user_id;
+      const uname = await User.findById(user_id)
+      console.log(uname.name)
       const { quiz_id, answers } = req.body;
 
       const quiz = await Quiz.findById(quiz_id);
@@ -97,12 +100,21 @@ const QuizController = {
             solved++;
           }
         }
+        // const { partInfo } = quiz;
+        // partInfo[partInfo.length].partId= "a"
+        
+        // quiz.partInfo.push({
+        //   partId: uname.name,
+        //   partScore:solved
+        // })
 
-        // update quiz stats
+        
+        // partInfo[partInfo.length].partScore=solved
+        //update quiz stats
         quiz.participated++;
         quiz.flawless += Number(solved === questions.length); // + 0 or 1
         const updatedQuiz = await Quiz.findByIdAndUpdate(quiz_id, quiz);
-
+        //console.log(updatedQuiz)
         // update quizzer stats
         const updatedQuizzer = await QuizzerController.incrementParticipationCount(
           user_id,

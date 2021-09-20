@@ -4,6 +4,9 @@ import { Redirect } from "react-router-dom";
 import QuizQuestion from "./QuizQuestion";
 import Emoji from "../Layout/Emoji";
 import QuizService from "../../service/QuizService";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
+// import Quiz from "../model/Quiz";
+
 
 class QuizTaker extends Component {
   constructor(props) {
@@ -24,7 +27,7 @@ class QuizTaker extends Component {
     };
     sessionStorage.setItem("quiz-attending", this.state.quiz._id);
   }
-
+  
   componentDidMount() {}
 
   handleSelectAnswer = (q_id, opt_id) => {
@@ -60,7 +63,19 @@ class QuizTaker extends Component {
     }
 
     const { quiz } = this.state;
-
+    const renderTime = ({ remainingTime }) => {
+      if (remainingTime === 0) {
+        return this.handleSubmit();
+      }
+    //onClick={this.handleSubmit}
+      return (
+        <div className="timer">
+          <div className="text">Remaining</div>
+          <div className="value">{remainingTime}</div>
+          <div className="text">seconds</div>
+        </div>
+      );
+    };
     return (
       <React.Fragment>
         <NavBar
@@ -68,6 +83,16 @@ class QuizTaker extends Component {
           checkLogin={this.props.checkLogin}
           onLogout={this.props.onLogout}
         />
+         <div className="timer-wrapper">
+          <CountdownCircleTimer
+          isPlaying
+          duration={quiz.time *60}
+          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+          onComplete={() => [true, 1000]}
+          >
+          {renderTime}
+        </CountdownCircleTimer>
+        </div>
         <div className="container-fluid">
           <div className="row mt-5">
             <div className="col-sm-8 offset-sm-2 section">
@@ -86,6 +111,8 @@ class QuizTaker extends Component {
               </div>
             </div>
           </div>
+
+         
 
           <div className="row mt-5">
             {quiz.questions.map((question) => (

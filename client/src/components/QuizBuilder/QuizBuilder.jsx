@@ -12,6 +12,7 @@ class QuizBuilder extends Component {
       title: "",
       description: "",
       type: "",
+      time: "",
       questions: [],
     };
   }
@@ -31,7 +32,9 @@ class QuizBuilder extends Component {
   handleTypeChange = (e) => {
     this.setState({ type: e.target.value });
   };
-
+  handleTimeChange = (e) => {
+    this.setState({ time: e.target.value });
+  };
   handleAddQuestion = (e) => {
     const { questions } = this.state;
     const id =
@@ -162,6 +165,12 @@ class QuizBuilder extends Component {
                 value={this.state.description}
                 onChange={this.handleDescriptionChange}
               />
+              <input
+                className="profile-email input-quiz-desc mt-1"
+                placeholder="Quiz Time in minutes"
+                value={this.state.time}
+                onChange={this.handleTimeChange}
+              />
               <div className="row mt-5 pl-3">
                 <select
                   className="option-dropdown"
@@ -172,9 +181,9 @@ class QuizBuilder extends Component {
                     Quiz Type
                   </option>
                   <option value="AMATEUR">Classic</option>
-                  <option value="TIME_TRIAL" disabled>
+                  {/* <option value="TIME_TRIAL" disabled>
                     Time Trial (Under development)
-                  </option>
+                  </option> */}
                 </select>
               </div>
             </div>

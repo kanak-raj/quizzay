@@ -12,6 +12,8 @@ const Tools = (props) => {
         <div className="card">
           <div className="tooltip-wrapper">
             <Link to="/quiz-builder">
+              {/* {props.role==="Admin" && }
+              disabled={props.role==="Student"} */}
               <button  className="tool-button">
                 <Emoji emoji="💀" /> Build Quiz
               </button>

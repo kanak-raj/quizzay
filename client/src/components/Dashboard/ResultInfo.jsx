@@ -3,7 +3,7 @@ import Emoji from "../Layout/Emoji";
 import DateUtil from "../../Utils/DateUtil";
 import { Link, Redirect } from "react-router-dom";
 
-const QuizInfo = (props) => {
+const ResultInfo = (props) => {
   return (
     <React.Fragment>
       <tr style={{}}>
@@ -23,29 +23,24 @@ const QuizInfo = (props) => {
             color: "var(--quizden-bg-dark)",
           }}
         >
-          {props.title}
+          {props.id}
         </td>
+        
         <td
-          style={{
-            fontFamily: `"Roboto", sans-serif`,
-            color: "dimgray",
-          }}
+          className="option-dropdown"
+          style={{ color: "var(--quizden-bg-dark" }}
         >
-          {DateUtil.getFormatedDateTime(props.date)}
+          {props.partInfo.partId}
         </td>
         <td
           className="option-dropdown"
           style={{ color: "var(--quizden-bg-dark" }}
         >
-          {props.participated}
+          {props.partInfo.partScore}
         </td>
-        <td
-          className="option-dropdown"
-          style={{ color: "var(--quizden-bg-dark" }}
-        >
-          {props.flawless}
-        </td>
-        <td
+        </tr>
+        console.log(props)
+        {/* <td
           style={{
             fontFamily: `"Lexend Deca", sans-serif`,
             fontSize: "14px",
@@ -65,9 +60,9 @@ const QuizInfo = (props) => {
           className="option-dropdown"
           style={{ color: "var(--quizden-bg-dark" }}
         >
-          {/* <Link to="/result">View  Result</Link> */}
+          <Link to="/result">View  Result</Link>
         </td>
-      </tr>
+      </tr> */}
       {/* <div className="row">
         <div className="col-sm-5 option-name">{props.title}</div>
         <div
@@ -108,4 +103,4 @@ const QuizInfo = (props) => {
   );
 };
 
-export default QuizInfo;
+export default ResultInfo;
