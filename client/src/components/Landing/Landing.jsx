@@ -15,7 +15,7 @@ const Landing = (props) => {
         <div className="" style={{ textAlign: "center", marginTop: "10vh" }}>
           <Icon size="240px" />
         </div>
-        <div className="jumbo">Quiz Builder</div>
+        <div className="jumbo">Quizzay: The Quiz Builder</div>
         <div className=" jumbo-subtitle">
           Get a quiz code to join
         </div>

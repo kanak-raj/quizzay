@@ -82,11 +82,11 @@ class Dashboard extends Component {
               quizzes={this.props.quizzes}
             />
             <br/>
-            {/* <CuratedResultList
+            <CuratedResultList
               // use this class only if you're desperate: curated-quiz-section
               classes="curated-quiz-section section"
-              // quizzes={this.props.quizzes}
-            /> */}
+              quizzes={this.props.quizzes}
+            />
             {/* Tools section  end*/}
           </div>
         </div>

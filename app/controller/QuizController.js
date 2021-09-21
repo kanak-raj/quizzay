@@ -103,10 +103,10 @@ const QuizController = {
         // const { partInfo } = quiz;
         // partInfo[partInfo.length].partId= "a"
         
-        // quiz.partInfo.push({
-        //   partId: uname.name,
-        //   partScore:solved
-        // })
+        quiz.partInfo.push({
+          partId: uname.name,
+          partScore:solved
+        })
 
         
         // partInfo[partInfo.length].partScore=solved

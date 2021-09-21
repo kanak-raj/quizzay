@@ -15,7 +15,7 @@ const Logo = () => {
           paddingLeft: "8px",
         }}
       >
-        Quizzy
+        Quizzay
       </span>
     </React.Fragment>
   );
