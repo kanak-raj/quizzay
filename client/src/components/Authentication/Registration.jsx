@@ -11,7 +11,7 @@ class Registration extends Component {
       name: "",
       email: "",
       password: "",
-      role:"",
+      // role:"",
       error: false,
     };
   }
@@ -34,8 +34,8 @@ class Registration extends Component {
 
   handleRegistrationSubmit = (e) => {
     e.preventDefault();
-    const { name, email, password,role } = this.state;
-    AuthService.register({ name, email, password,role }).then((response) => {
+    const { name, email, password } = this.state;
+    AuthService.register({ name, email, password }).then((response) => {
       if (response === false) {
         this.setState({ error: true });
       } else {
@@ -138,34 +138,27 @@ class Registration extends Component {
                 </div>
               </div>
 
-              <div className="row mt-4">
-                <div className="col-sm-4 offset-sm-4">
-                  {/* </div></div><label className="input-label" htmlFor="inputEmail"> */}
-                  <label className="input-label">
-                    Role
-                  </label><br /> 
-                  <input 
-                    type="radio" 
-                    id="Admin" 
-                    name="role" 
-                    value="Admin"
-                    // checked={this.state.setState === 'Admin'} 
-                    onChange={this.handleRoleChange}
-                    onClick={this.radioClick}
-                    />
-                  <label className="input-label" for="Admin"> Admin</label> <br />
-                    <input  
-                      type="radio" 
-                      id="Student" 
-                      name="role" 
-                      value="Student" 
-                      // checked={this.state.setState === 'Student'} 
-                      onChange={this.handleRoleChange}
-                      onClick={this.radioClick}
-                      />
-                  <label className="input-label" for="Student"> Student</label><br />
+              {/* role */}
+              {/* <div className="row mt-4">
+                <div
+                  className="col-sm-4 offset-sm-4"
+                  //   style={{ backgroundColor: "red" }}
+                >
+                  <label className="input-label" htmlFor="inputPassword">
+                    Role-Admin (Yes/No)
+                  </label>
+                  <input
+                    //required="required"
+                    type="text"
+                    className="form-control input-field"
+                    aria-describedby="Input"
+                    placeholder="Yes/No"
+                    value={this.state.role}
+                    //onChange={this.handleRoleChange}
+                  />
                 </div>
-              </div> 
+              </div> */}
+              
 
               <div className="row mt-5">
                 <div className="col-sm-2 offset-sm-4">

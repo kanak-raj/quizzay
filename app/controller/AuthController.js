@@ -12,6 +12,7 @@ const AuthController = {
       name: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().required(),
+      // role: Joi.string().required(),
     });
 
     try {
@@ -25,7 +26,7 @@ const AuthController = {
       if (existingUser) return res.status(400).send("User already exists");
 
       // create user add role
-      const { name, email, password,role } = req.body;
+      const { name, email, password } = req.body;
 
       // hasing password
       const salt = bcrypt.genSaltSync();
@@ -36,7 +37,7 @@ const AuthController = {
         name: name,
         email: email,
         password: hashedPass,
-        role: role,
+        //role: role,
       });
       const savedUser = await user.save();
       // return res.status(200).send(savedUser);
@@ -68,11 +69,11 @@ const AuthController = {
       // create and assign a jwt token
       const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
       //role
-      const { _id, name, email,role } = user;
+      const { _id, name, email } = user;
       return res
         .header("auth-token", token)
         .status(200)
-        .send({ _id, name, email,role });
+        .send({ _id, name, email });
     } catch (err) {
       return res.status(400).send("Invalid data given.");
     }

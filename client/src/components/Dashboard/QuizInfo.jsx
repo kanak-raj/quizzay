@@ -31,7 +31,8 @@ const QuizInfo = (props) => {
             color: "dimgray",
           }}
         >
-          {DateUtil.getFormatedDateTime(props.date)}
+          {/* {DateUtil.getFormatedDateTime(props.date)} */}
+          {props.date.substring(0, 10)}
         </td>
         <td
           className="option-dropdown"

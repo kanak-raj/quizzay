@@ -90,5 +90,5 @@ const quizSchema = new mongoose.Schema({
     default: Date.now(),
   },
 });
-
+// console.log(Date.now)
 module.exports = mongoose.model("Quiz", quizSchema);

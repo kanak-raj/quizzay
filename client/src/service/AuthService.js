@@ -6,11 +6,9 @@ const AuthService = {
     return await axios
       .post("/api/v1/auth/registration", request)
       .then((response) => {
-        
         return true;
       })
       .catch((err) => {
-        console.log(err+ "==================================================")
         return false;
       });
   },

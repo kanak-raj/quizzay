@@ -25,10 +25,11 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
-  role: {
-    type: String,
-    // required: true,
-  },
+  // role: {
+  //   type: String,
+  //   // required: true,
+  //   default:"Student",
+  // },
 });
 
 module.exports = mongoose.model("User", userSchema);
