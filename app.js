@@ -24,7 +24,7 @@ app.use(routes);
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "", "client", "build", "index.html"));
 });
-const __dirname = path.resolve()
+//const __dirname = path.resolve()
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static(path.join(__dirname, '../client/build')))
 }

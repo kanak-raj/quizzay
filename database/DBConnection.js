@@ -6,7 +6,7 @@ dotenv.config();
 function connect() {
   mongoose.connect(
     // "mongodb+srv://admin-cja:abc@cluster0.n1dg8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    MONGO_URI,
+    "mongodb+srv://cja:cja@quizzay.c1hcm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     { useUnifiedTopology: true, useNewUrlParser: true },
     () => console.log("Connected to Database.")
   );
